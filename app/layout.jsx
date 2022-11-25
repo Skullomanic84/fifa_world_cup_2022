@@ -1,4 +1,6 @@
-import './globals.css'
+import Link from 'next/link';
+import { DateTime } from 'luxon';
+import './globals.css';
 
 export default function RootLayout({ children }) {
   return (
@@ -8,7 +10,17 @@ export default function RootLayout({ children }) {
         head.jsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>{children}</body>
+      <body className='container mx-auto'>
+      <nav className='py-3 border-b-2'>
+        <div className='flex justify-between'>
+          <Link href="/">
+            <h1 className='text-3xl font-black text-rose-900'>Fifa WC 2022</h1>
+          </Link>
+          <p className='my-auto font-semibold text-sm'>{ DateTime.now().toLocaleString(DateTime.DATETIME_MED)}</p>
+        </div>
+      </nav>
+      {children}
+      </body>
     </html>
   )
 }
